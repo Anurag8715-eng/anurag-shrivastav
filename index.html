@@ -11,139 +11,145 @@
 
 <style>
 :root{
-    --primary:#ffb400;
-    --bg:#0a0a0c;
-    --glass:rgba(255,255,255,0.04);
-    --border:rgba(255,255,255,0.12);
+  --primary:#ff4f9a;
+  --bg:#0a0a0c;
+  --glass:rgba(255,255,255,.06);
+  --border:rgba(255,255,255,.14);
 }
 *{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:'Space Grotesk',sans-serif;
-    background:var(--bg);
-    color:white;
+  font-family:'Space Grotesk',sans-serif;
+  background:var(--bg);
+  color:#fff;
 }
+
+/* PARTICLES */
 #particles-js{
-    position:fixed;
-    inset:0;
-    z-index:1;
-}
-.content{
-    position:relative;
-    z-index:10;
-    max-width:1100px;
-    margin:auto;
-    padding:0 20px;
-}
-section{
-    min-height:100vh;
-    padding:120px 0;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-}
-.accent{
-    color:var(--primary);
-    letter-spacing:3px;
-    font-size:.85rem;
-    margin-bottom:15px;
-    font-weight:700;
-}
-h1{
-    font-size:clamp(3.5rem,10vw,6rem);
-    line-height:.9;
-    margin-bottom:20px;
-}
-.card{
-    background:var(--glass);
-    border:1px solid var(--border);
-    border-radius:22px;
-    padding:35px;
-    backdrop-filter:blur(15px);
-}
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:22px;
-}
-.skill-tag{
-    display:inline-block;
-    margin:6px;
-    padding:6px 16px;
-    border-radius:50px;
-    background:rgba(255,180,0,.12);
-    color:var(--primary);
-    font-size:.85rem;
+  position:fixed;
+  inset:0;
+  z-index:1;
 }
 
-/* buttons */
+/* NAVBAR */
+.navbar{
+  position:fixed;top:0;width:100%;
+  background:rgba(10,10,12,.6);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  z-index:100;
+}
+.nav-inner{
+  max-width:1100px;margin:auto;
+  padding:16px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+.logo{color:var(--primary);font-weight:700;letter-spacing:2px}
+.nav a{color:#ccc;text-decoration:none;margin-left:26px}
+.nav a:hover{color:var(--primary)}
+
+/* SOCIAL */
+.social{
+  position:fixed;left:22px;top:50%;
+  transform:translateY(-50%);
+  display:flex;flex-direction:column;gap:18px;
+  z-index:120;
+}
+.social a{color:#aaa;font-size:1.4rem}
+.social a:hover{color:var(--primary)}
+
+/* LAYOUT */
+.container{
+  position:relative;
+  z-index:10;
+  max-width:1100px;
+  margin:auto;
+  padding:0 20px;
+}
+section{padding:110px 0}
+
+/* HERO */
+.hero{padding-top:160px}
+.hero h1{
+  font-size:clamp(3.8rem,8vw,6rem);
+  line-height:.9;
+}
+.hero p{max-width:650px;color:#aaa;margin-top:14px}
+
+/* SLIDE TEXT (SUBTLE LIVE) */
+.slide-text{
+  color:var(--primary);
+  font-size:1.4rem;
+  margin-top:12px;
+  height:1.6em;
+  overflow:hidden;
+}
+.slide-text span{
+  display:block;
+  animation:slide 6s infinite;
+}
+@keyframes slide{
+  0%{transform:translateY(0)}
+  33%{transform:translateY(-1.6em)}
+  66%{transform:translateY(-3.2em)}
+  100%{transform:translateY(0)}
+}
+
+/* BUTTONS */
 .btn{
-    display:inline-block;
-    padding:14px 34px;
-    border-radius:50px;
-    font-weight:700;
-    text-decoration:none;
-    margin-top:25px;
+  display:inline-block;margin-top:26px;
+  padding:14px 36px;border-radius:50px;
+  font-weight:700;text-decoration:none;
 }
-.btn-primary{
-    background:var(--primary);
-    color:black;
-    box-shadow:0 10px 30px rgba(255,180,0,.35);
+.primary{background:var(--primary);color:#000}
+.outline{border:2px solid var(--primary);color:var(--primary);margin-left:12px}
+.primary:hover,.outline:hover{transform:translateY(-3px)}
+
+/* CARD */
+.card{
+  background:var(--glass);
+  border:1px solid var(--border);
+  border-radius:22px;
+  padding:32px;
+  transition:.3s;
 }
-.btn-outline{
-    border:2px solid var(--primary);
-    color:var(--primary);
-    margin-left:15px;
+.card:hover{transform:translateY(-6px);border-color:var(--primary)}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:26px;
 }
 
-/* floating hire */
-.hire-float{
-    position:fixed;
-    right:30px;
-    bottom:30px;
-    z-index:100;
-    background:var(--primary);
-    color:black;
-    padding:14px 34px;
-    border-radius:50px;
-    font-weight:700;
-    text-decoration:none;
-    box-shadow:0 10px 30px rgba(255,180,0,.35);
+/* SKILLS */
+.skill{
+  display:inline-block;
+  padding:8px 18px;border-radius:50px;
+  background:rgba(255,79,154,.18);
+  color:var(--primary);
+  margin:6px;font-size:.85rem;
 }
 
-/* social */
-.social-sidebar{
-    position:fixed;
-    left:20px;
-    top:50%;
-    transform:translateY(-50%);
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-    background:var(--glass);
-    padding:18px 12px;
-    border-radius:40px;
-    border:1px solid var(--border);
-    z-index:100;
+/* FORM */
+input,textarea{
+  width:100%;padding:14px;border-radius:12px;
+  border:none;background:#111;color:#fff
 }
-.social-sidebar a{
-    color:#aaa;
-    font-size:1.4rem;
-    transition:.3s;
-}
-.social-sidebar a:hover{
-    color:var(--primary);
-    transform:scale(1.2);
+button{
+  background:var(--primary);color:#000;
+  padding:14px 40px;border:none;border-radius:50px;
+  font-weight:700;cursor:pointer
 }
 
-/* mobile */
+/* MOBILE */
 @media(max-width:768px){
-    .social-sidebar{
-        flex-direction:row;
-        top:auto;
-        bottom:20px;
-        left:50%;
-        transform:translateX(-50%);
-    }
+  .nav a{margin-left:14px;font-size:.9rem}
+  .social{
+    flex-direction:row;
+    top:auto;bottom:20px;
+    left:50%;transform:translateX(-50%);
+  }
 }
 </style>
 </head>
@@ -152,149 +158,103 @@ h1{
 
 <div id="particles-js"></div>
 
-<!-- SOCIAL -->
-<div class="social-sidebar">
-    <a href="https://www.linkedin.com/in/anurag-shrivastav-4772b426a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-    <a href="https://github.com/Anurag8715-eng" target="_blank"><i class="fab fa-github"></i></a>
-    <a href="https://www.instagram.com/_anurag_shrivastava__" target="_blank"><i class="fab fa-instagram"></i></a>
+<!-- NAVBAR -->
+<div class="navbar">
+  <div class="nav-inner">
+    <div class="logo">ANURAG</div>
+    <div class="nav">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
 </div>
 
-<a href="#hireme" class="hire-float">HIRE ME</a>
+<!-- SOCIAL -->
+<div class="social">
+  <a href="https://www.linkedin.com/in/anurag-shrivastav-4772b426a" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+  <a href="https://github.com/Anurag8715-eng" target="_blank"><i class="fab fa-github"></i></a>
+  <a href="https://www.instagram.com/_anurag_shrivastava__" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
 
-<div class="content">
+<div class="container">
 
 <!-- HERO -->
-<section>
-<span class="accent">DATA SCIENCE ASPIRANT</span>
-<h1>ANURAG<br>SHRIVASTAV.</h1>
+<section class="hero">
+  <h1>ANURAG<br>SHRIVASTAV.</h1>
 
-<p style="color:#aaa;max-width:650px;font-size:1.1rem;">
-Highly motivated B.Tech Computer Science (Data Science) student seeking an entry-level
-<b>Data Scientist / Data Analyst</b> role. Passionate about applying Python, data analysis
-and machine learning concepts to solve real-world problems.
-</p>
+  <div class="slide-text">
+    <span>Python Developer</span>
+    <span>Machine Learning Enthusiast</span>
+    <span>Data Science Student</span>
+  </div>
 
-<a href="assets/Anurag_Resume.pdf" download class="btn btn-primary">DOWNLOAD RESUME</a>
-<a href="#projects" class="btn btn-outline">VIEW PROJECTS</a>
+  <p>B.Tech CSE (Data Science) student focused on real-world data driven solutions.</p>
 
-<div style="display:flex;gap:50px;margin-top:50px;flex-wrap:wrap;">
-    <div><h2 style="color:#ffb400;">2026</h2><p style="color:#888;">Graduation</p></div>
-    <div><h2 style="color:#ffb400;">2+</h2><p style="color:#888;">Major Projects</p></div>
-    <div><h2 style="color:#ffb400;">Python</h2><p style="color:#888;">Primary Skill</p></div>
-</div>
+  <a href="assets/Anurag_Resume.pdf" download class="btn primary">Download Resume</a>
+  <a href="#projects" class="btn outline">View Projects</a>
 </section>
 
-<!-- WHAT I DO -->
-<section>
-<span class="accent">// WHAT I DO</span>
-<div class="grid">
-    <div class="card">
-        <h3>📊 Data Analysis</h3>
-        <p style="color:#888;">Clean, analyze and interpret data using Pandas & NumPy.</p>
-    </div>
-    <div class="card">
-        <h3>🤖 Machine Learning</h3>
-        <p style="color:#888;">Build predictive models using supervised & unsupervised learning.</p>
-    </div>
-    <div class="card">
-        <h3>📈 Visualization</h3>
-        <p style="color:#888;">Create clear insights using Matplotlib & Seaborn.</p>
-    </div>
-</div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-<span class="accent">// KEY PROJECTS</span>
-<div class="grid">
-    <div class="card">
-        <h3>Stock Price Prediction Model</h3>
-        <p style="color:#888;">
-            Time-series forecasting using ARIMA / LSTM with data cleaning
-            and feature extraction.
-        </p>
-        <p style="color:#666;font-size:.9rem;">
-            <b>Tools:</b> Python, TensorFlow, Keras, Pandas
-        </p>
-    </div>
-
-    <div class="card">
-        <h3>E-commerce Customer Segmentation</h3>
-        <p style="color:#888;">
-            K-Means clustering to identify distinct customer groups
-            for better business decisions.
-        </p>
-        <p style="color:#666;font-size:.9rem;">
-            <b>Tools:</b> Python, Scikit-learn, Seaborn
-        </p>
-    </div>
-</div>
-</section>
-
-<!-- SKILLS -->
-<section>
-<span class="accent">// TECHNICAL SKILLS</span>
-<div class="card">
-    <span class="skill-tag">Python</span>
-    <span class="skill-tag">Pandas</span>
-    <span class="skill-tag">NumPy</span>
-    <span class="skill-tag">Matplotlib</span>
-    <span class="skill-tag">Seaborn</span>
-    <span class="skill-tag">Machine Learning</span>
-    <span class="skill-tag">Statistical Modeling</span>
-    <span class="skill-tag">Data Visualization</span>
-    <span class="skill-tag">Basic SQL</span>
-    <span class="skill-tag">Git & GitHub</span>
-</div>
-</section>
-
-<!-- HIRE ME -->
-<section id="hireme">
-<span class="accent">// HIRE ME</span>
-<div class="card">
-    <h3>Anurag Shrivastav</h3>
-    <p style="color:#aaa;">Aspiring Data Scientist | Entry-Level Opportunities</p>
-
-    <p style="color:#888;margin-top:15px;">
-        📞 <b>Phone:</b> +91 7987020204<br>
-        📧 <b>Email:</b> anuragshri529@gmail.com<br>
-        📍 <b>Location:</b> Bhopal, Madhya Pradesh
+<section id="about">
+  <div class="card">
+    <p>
+      I specialize in Data Science with hands-on experience in Python, Machine Learning,
+      data analysis and visualization. Actively seeking internships and entry-level roles.
     </p>
-
-    <a href="assets/Anurag_Resume.pdf" download class="btn btn-primary">
-        DOWNLOAD FULL RESUME
-    </a>
-</div>
+  </div>
 </section>
 
-<footer style="text-align:center;padding:40px 0;color:#666;">
-© 2026 Anurag Shrivastav • Data Science Portfolio
+<section id="skills">
+  <div class="card">
+    <span class="skill">Python</span>
+    <span class="skill">Pandas</span>
+    <span class="skill">NumPy</span>
+    <span class="skill">Machine Learning</span>
+    <span class="skill">SQL</span>
+    <span class="skill">Git & GitHub</span>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="grid">
+    <div class="card">
+      <h3>Stock Price Prediction</h3>
+      <p>ARIMA & LSTM forecasting models.</p>
+    </div>
+    <div class="card">
+      <h3>Customer Segmentation</h3>
+      <p>K-Means clustering for insights.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="card">
+    <form action="https://formspree.io/f/mlgdzzpj" method="POST">
+      <input name="name" placeholder="Your Name" required><br><br>
+      <input type="email" name="email" placeholder="Your Email" required><br><br>
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea><br><br>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer style="text-align:center;padding:40px 0;color:#666">
+© 2026 Anurag Shrivastav
 </footer>
 
 </div>
 
-<!-- PARTICLES (UNCHANGED) -->
 <script>
-particlesJS("particles-js", {
-    "particles": {
-        "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-        "color": { "value": "#ffb400" },
-        "shape": { "type": "circle" },
-        "opacity": { "value": 0.3 },
-        "size": { "value": 2 },
-        "line_linked": {
-            "enable": true,
-            "distance": 150,
-            "color": "#ffb400",
-            "opacity": 0.1,
-            "width": 1
-        },
-        "move": { "enable": true, "speed": 1, "random": true }
-    },
-    "interactivity": {
-        "events": { "onhover": { "enable": true, "mode": "grab" } }
-    },
-    "retina_detect": true
+particlesJS("particles-js",{
+  particles:{
+    number:{value:80},
+    color:{value:"#ff4f9a"},
+    size:{value:2},
+    line_linked:{enable:true,color:"#ff4f9a",opacity:.12},
+    move:{enable:true,speed:1}
+  }
 });
 </script>
 
